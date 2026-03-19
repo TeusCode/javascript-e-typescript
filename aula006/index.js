@@ -4,3 +4,5 @@ let n2 = Number (window.prompt("Digite outro número"));
 let soma = n1 + n2;
 
 window.alert(`A soma dos números ${n1} + ${n2} = ${soma}`);
+
+window.confirm(`O valor ${soma} está correto?`);
