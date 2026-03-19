@@ -16,4 +16,4 @@ anoNascimento = anoAtual - idade;
 
 console.log(`Meu nome é ${nome}, tenho ${idade} anos e peso ${peso}kg`);
 console.log(`Tenho ${altura}m de altura, nasci no ano de ${anoNascimento}`);
-console.log(`Meu Índice de massa corporal é  de ${imc.toFixed(2)} kg/m²`)
+console.log(`Meu Índice de massa corporal é  de ${imc.toFixed(2)} kg/m²`);
