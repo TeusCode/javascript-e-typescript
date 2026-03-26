@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            width: 80%;
+            height: 20px;
+            background-color: gray;
+            border-radius: 5px;
+        }
+        #brrVida{
+            background-color: green;
+            height: 20px;
+            border-radius: 5px;
+
+            transition: width 3s;
+        }
+    </style>
+</head>
+<body>
+    <h1>Barra de vida do monstro</h1>
+    <div id="container"><div id="brrVida"></div></div>
+    <script>
+
+const barraVida = document.getElementById('brrVida');
+
+brrVida.style = `width:100%`
+
+let ataque = prompt("Digite o seu ataque!");
+
+let dano = Math.random()*(100-0)+0;
+let danoFinal = Math.trunc(dano);
+
+brrVida.style = `width:${danoFinal}%`
+
+    </script>
+</body>
+</html>
