@@ -5,25 +5,23 @@ function meuEscopo() {
     const altura = form.querySelector('#input-teste-2');
     const resultados = document.querySelectorAll(".resultados");
     const resultadosTitulo = document.querySelectorAll(".resultadosTitulo");
+    let resultadoTexto;
+    let resultadoIndex;
     
-    
-
     form.addEventListener('submit', calcularImc);
 
     function calcularImc(event) {
         event.preventDefault();
 
-        meuEscopo()
-        //Reset:
-        resultados.style="color:black; font-weight:0;"
-        resultadosTitulo.style="color:black; font-weight:0;"
-
         const calculo = Number(peso.value) / (Number(altura.value) ** 2);
         const resultado = Number(calculo.toFixed(2));
         const mensagem = document.querySelector("#mensagem");
 
-        let resultadoTexto;
-        let resultadoIndex;
+        if(resultadoIndex !== undefined){
+        resultados[resultadoIndex].style="color:black; font-weight:0;"
+
+        resultadosTitulo[resultadoIndex].style="color:black; font-weight:0;"
+        }
 
         if(resultado <= 18.5){
             resultadoTexto = "Abaixo do peso"
@@ -44,10 +42,10 @@ function meuEscopo() {
             resultadoTexto = "Obesidade grau 3"
             resultadoIndex = 5
         }else{
-            resultadoTexto = "ERRO!!"
+            resultadoTexto = "Você não digitou nada"
         }
         
-        mensagem.innerHTML = `O resultado é ${resultadoTexto} ${resultado}`
+        mensagem.innerHTML = `<mark>O resultado é ${resultadoTexto} ${resultado}</mark>`
 
         resultados[resultadoIndex].style="color:green; font-weight:bold;"
         resultadosTitulo[resultadoIndex].style="color:green; font-weight:bold;"
