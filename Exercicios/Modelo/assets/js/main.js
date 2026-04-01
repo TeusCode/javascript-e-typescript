@@ -1,57 +1,68 @@
-const form = document.querySelector('#form');
+const form = document.querySelector("#form");//Seleciona o Elemento Form.
 
-function meuEscopo() {
-    const peso = form.querySelector('#input-teste-1');
-    const altura = form.querySelector('#input-teste-2');
-    const resultados = document.querySelectorAll(".resultados");
-    const resultadosTitulo = document.querySelectorAll(".resultadosTitulo");
-    let resultadoTexto;
-    let resultadoIndex;
-    
-    form.addEventListener('submit', calcularImc);
+form.addEventListener('submit', (e) => { //Observa quando o evento 'submit' (envio do form) será utilizado.
+    e.preventDefault();//Previne o comportamento padrão para o evento 'submit', para que a página não recarregue.
 
-    function calcularImc(event) {
-        event.preventDefault();
+    //Seleciona os elementos dos inputs:
+    const inputPeso = form.querySelector("#input-peso");
+    const inputAltura = form.querySelector("#input-altura");
 
-        const calculo = Number(peso.value) / (Number(altura.value) ** 2);
-        const resultado = Number(calculo.toFixed(2));
-        const mensagem = document.querySelector("#mensagem");
+    //Captura os valores dos inputs em strings, e transforma em Number:
+    const peso = Number(inputPeso.value);
+    const altura = Number(inputAltura.value);
 
-        if(resultadoIndex !== undefined){
-        resultados[resultadoIndex].style="color:black; font-weight:0;"
+    if (!peso) {
+        setResultado("Peso inválido!", false);
+        return;
+    }
 
-        resultadosTitulo[resultadoIndex].style="color:black; font-weight:0;"
-        }
+    if (!altura) {
+        setResultado("Altura inválida!", false)
+        return;
+    }
 
-        if(resultado <= 18.5){
-            resultadoTexto = "Abaixo do peso"
-            resultadoIndex = 0
-        }else if(resultado > 18.5 &&resultado <=24.9){
-            resultadoTexto = "Peso normal"
-            resultadoIndex = 1
-        }else if(resultado >24.9 && resultado <= 29.9){
-            resultadoTexto = "Sobrepeso"
-            resultadoIndex = 2
-        }else if(resultado > 29.9&& resultado <=34.9){
-            resultadoTexto = "Obesidade grau 1"
-            resultadoIndex = 3
-        }else if(resultado >34.9&& resultado <=39.9){
-            resultadoTexto = "Obesidade grau 2"
-            resultadoIndex = 4
-        }else if(resultado > 40){
-            resultadoTexto = "Obesidade grau 3"
-            resultadoIndex = 5
-        }else{
-            resultadoTexto = "Você não digitou nada"
-        }
-        
-        mensagem.innerHTML = `<mark>O resultado é ${resultadoTexto} ${resultado}</mark>`
+    const imc = calculaIMC(peso, altura);
+    const NivelImc = rangeImc(imc);
 
-        resultados[resultadoIndex].style="color:green; font-weight:bold;"
-        resultadosTitulo[resultadoIndex].style="color:green; font-weight:bold;"
-        console.log(resultadoIndex)
+    const msg = `Seu IMC é ${imc} (${NivelImc})`
+
+    setResultado(msg, true);
+
+    function calculaIMC(peso, altura) {
+        const imc = peso / (altura ** 2);
+        return Number(imc.toFixed(2));
     };
 
-};
+    function rangeImc(imc) {
+        const range = ["Abaixo do peso", "Peso normal", "Sobrepeso", "Obesidade grau 1", "Obesidade grau 2", "Obesidade grau 3"];
 
-meuEscopo()
+        if (imc >= 40) return range[5];
+        if (imc >= 35) return range[4];
+        if (imc >= 30) return range[3];
+        if (imc >= 25) return range[2];
+        if (imc >= 18.5) return range[1];
+        if (imc < 18.5) return range[0];
+
+    };
+
+    function criarP() {
+        const p = document.createElement('p');
+        return p;
+    };
+
+    function setResultado(msg, isValid) {
+        const mensagem = document.querySelector('#mensagem');
+        mensagem.innerHTML = '';
+
+        const p = criarP();
+
+        if(isValid) {
+            p.classList.add('paragrafo-resultado');
+        }else {
+            p.classList.add('paragrafo-bad');
+        }
+
+        p.innerHTML = msg;
+        mensagem.appendChild(p);
+    };
+});
