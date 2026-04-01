@@ -11,6 +11,7 @@ form.addEventListener('submit', (e) => { //Observa quando o evento 'submit' (env
     const peso = Number(inputPeso.value);
     const altura = Number(inputAltura.value);
 
+    //Válida se o usuário digitar algo que não seja um número, ou deixar em branco:
     if (!peso) {
         setResultado("Peso inválido!", false);
         return;
@@ -21,34 +22,34 @@ form.addEventListener('submit', (e) => { //Observa quando o evento 'submit' (env
         return;
     }
 
-    const imc = calculaIMC(peso, altura);
-    const NivelImc = rangeImc(imc);
+    const imc = calculaIMC(peso, altura);//Recebe imc calculado e formatado.
+    const NivelImc = rangeImc(imc);//Recebe o resultado em texto do imc.
 
-    const msg = `Seu IMC é ${imc} (${NivelImc})`
+    const msg = `Seu IMC é ${imc} (${NivelImc})`//Monta a mensagem, para exibir na tela.
 
     setResultado(msg, true);
 
     function calculaIMC(peso, altura) {
         const imc = peso / (altura ** 2);
         return Number(imc.toFixed(2));
-    };
+    };//Realiza o cálculo do IMC.
 
     function rangeImc(imc) {
         const range = ["Abaixo do peso", "Peso normal", "Sobrepeso", "Obesidade grau 1", "Obesidade grau 2", "Obesidade grau 3"];
 
-        if (imc >= 40) return range[5];
-        if (imc >= 35) return range[4];
-        if (imc >= 30) return range[3];
-        if (imc >= 25) return range[2];
+        if (imc >= 40)   return range[5];
+        if (imc >= 35)   return range[4];
+        if (imc >= 30)   return range[3];
+        if (imc >= 25)   return range[2];
         if (imc >= 18.5) return range[1];
-        if (imc < 18.5) return range[0];
+        if (imc < 18.5)  return range[0];
 
-    };
+    };//Encontra o valor, referente ao resultado em texto do imc.
 
     function criarP() {
         const p = document.createElement('p');
         return p;
-    };
+    };//Cria um elemento <p>.
 
     function setResultado(msg, isValid) {
         const mensagem = document.querySelector('#mensagem');
@@ -64,5 +65,5 @@ form.addEventListener('submit', (e) => { //Observa quando o evento 'submit' (env
 
         p.innerHTML = msg;
         mensagem.appendChild(p);
-    };
+    };//Exibe na tela o resultado formatado.
 });
