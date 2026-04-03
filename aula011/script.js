@@ -1,6 +1,14 @@
-const data = new Date("2021-12-21 15:30:00");//Recebe Data como argumento
+const data = new Date();//Recebe Data como argumento
 
 const diaSemana = data.getDay();//Pega o dia da semana. 0 a 6;
+const dia = data.getDate();//Pega o dia do mês;
+const mes = data.getMonth();//Pega o mes, 0 a 11;
+const ano = data.getFullYear();//Pega o ano;
+const horas = data.getHours();//Pega a hora;
+const minutos = data.getMinutes();//Pega os minutos;
+const segundos = data.getSeconds();//Pega os segundos;
+const miliSegundos = data.getMilliseconds();//Pega os milisegundos;
+
 
 function cvDiaSemana() {
     let diaSemanaTexto;
@@ -24,6 +32,7 @@ function cvDiaSemana() {
             diaSemanaTexto = 'ERRO!'
             return diaSemanaTexto;
     };
-}
+};
 
-console.log(diaSemana, cvDiaSemana(diaSemana),data.getHours());
+console.log(diaSemana, cvDiaSemana(diaSemana), data.getHours());
+console.log(`Hoje é dia ${dia}/${mes}/${ano}, ${cvDiaSemana()} e são exatamente, ${horas}:${minutos}:${segundos}:${miliSegundos}`)
