@@ -1,10 +1,10 @@
-const container = document.querySelector('.container')
+const container = document.querySelector('.container');
 
 const elementos = [
-    { tag: 'p', texto: 'Frase 1' },
-    { tag: 'div', texto: 'Frase 2' },
-    { tag: 'footer', texto: 'Frase 3' },
-    { tag: 'section', texto: 'Frase 4' }
+    { tag: 'p', texto: 'Texto dentro de um parágrafo "p"' },
+    { tag: 'div', texto: 'Texto dentro de uma divisão "div"' },
+    { tag: 'footer', texto: 'Texto dentro de um rodapé "Footer"' },
+    { tag: 'section', texto: 'Texto dentro de uma sessão "section"' }
 ];
 
 for (let i = 0; i < elementos.length; i++) {
