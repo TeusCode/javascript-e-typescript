@@ -1,10 +1,6 @@
-//Imutabilidade:
+let teste;
 
-let letra_A = "A";
-let letra_B = letra_A;
+teste.innerText = "Teste";
 
-console.log(letra_A, letra_B);
+console.log(teste)
 
-letra_A = "C";
-
-console.log(letra_A, letra_B);//Somente a letra A foi alterada, porque o B é a cópia do valor inicial de A
