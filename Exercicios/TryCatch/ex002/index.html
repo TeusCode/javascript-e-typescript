@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio Try Catch</title>
+</head>
+
+<body>
+    <input type="text" id="saldo" placeholder="saldo">
+    <input type="text" id="saque" placeholder="saque">
+    <button id="btnConfirmar" onclick="executar()">Confirmar</button>
+    <p id="msg"></p>
+
+    <script>
+
+        const msg = document.querySelector('#msg');
+        let saldoAtual;
+
+        function transacao(saldo, saque) {
+          
+            if (isNaN(saldo) || isNaN(saque) || saque === "" || saldo === ""){
+                throw new Error("Insira valores válidos!");
+            }
+
+              if (saldo < saque) {
+                throw new Error("Saldo insuficiente!");
+            }
+
+            saldoAtual = saldo - saque;
+            msg.innerHTML += `<p> Você realizou um saque de ${saque}! </p>`
+            msg.innerHTML += `<p> O seu saldo atual é ${saldoAtual}! </p>`
+        }
+
+        function executar() {
+            const inputSaldo = document.querySelector('#saldo');
+            const inputSaque = document.querySelector('#saque');
+
+            const saldo = Number(inputSaldo.value);
+            const saque = Number(inputSaque.value);
+
+            try {
+                transacao(saldo,saque);
+            } catch (e) {
+                alert(`ERRO: ${e.message}`);
+            } finally {
+                alert("Operação finalizada!")
+            }
+        }
+    </script>
+</body>
+
+</html>
