@@ -1,0 +1,66 @@
+# Aula 01 - Operadores de Comparação em JavaScriptNesta aula, iniciamos o estudo da Lógica de Programação focando nos operadores de comparação. Esses operadores são utilizados para comparar dois valores (operandos), e o resultado dessa expressão será sempre um valor Booleano (true ou false).Os Operadores de ComparaçãoAbaixo estão os principais operadores e suas funções:> (Maior que): Verifica se o valor da esquerda é maior que o da direita.>= (Maior ou igual a): Verifica se o valor da esquerda é maior ou igual ao da direita.< (Menor que): Verifica se o valor da esquerda é menor que o da direita.<= (Menor ou igual a): Verifica se o valor da esquerda é menor ou igual ao da direita.== (Igualdade): Verifica apenas o valor (não recomendado, pois faz conversão implícita de tipos).=== (Igualdade Estrita): Verifica o valor e o tipo de dado (recomendado).!= (Diferente): Verifica se os valores são diferentes (apenas valor).!== (Diferente Estrito): Verifica se o valor e o tipo são diferentes (recomendado).Exemplo de Código: Diferença entre == e ===O JavaScript possui um comportamento chamado Type Coercion (coerção de tipo). Ao usar ==, a linguagem tenta converter os tipos para comparar. No exemplo abaixo, vemos por que devemos usar o comparador estrito:JavaScriptconst num1 = 10;      // Tipo: Number
+const num2 = '10';    // Tipo: String
+
+console.log(num1 == num2);  // Retorna true (O JS converte a string em número)
+console.log(num1 === num2); // Retorna false (Os tipos são diferentes: Number vs String)
+# Aula 02 - Operadores LógicosOs operadores lógicos são utilizados para verificar múltiplas comparações em uma única expressão.Os 3 Operadores Principais&& (AND / E): Todas as condições devem ser verdadeiras para que o resultado final seja true. Se uma for falsa, tudo é falso.|| (OR / OU): Pelo menos uma das condições deve ser verdadeira para que o resultado seja true. Só retorna false se todas forem falsas.! (NOT / NÃO): Inverte o valor booleano. O que é true vira false e vice-versa.Exemplo Prático: Sistema de LoginJavaScriptconst usuarioDB = "luis";
+const senhaDB = "123456";
+
+const usuarioDigitado = "luis";
+const senhaDigitada = "123456";
+
+// O usuário só loga se o nome E a senha estiverem corretos
+const podeLogar = (usuarioDigitado === usuarioDB) && (senhaDigitada === senhaDB);
+
+console.log(podeLogar); // true
+# Aula 03 - Avaliação de Curto-Circuito (Short-Circuit)O JavaScript avalia as expressões lógicas de forma inteligente. Ele para a execução assim que encontra um valor que define o resultado final.No caso do && (AND): O JS busca pelo primeiro valor Falsy. Se encontrar, retorna esse valor e para. Se todos forem verdadeiros, retorna o último valor.No caso do || (OR): O JS busca pelo primeiro valor Truthy. Se encontrar, retorna ele e para.Valores Falsy em JavaScript:Além do valor literal false, os seguintes valores são avaliados como falso em contextos lógicos:0"", '', `` (Strings vazias)null / undefinedNaN (Not a Number)Qualquer valor diferente destes é considerado Truthy.# Aula 04 - Estruturas Condicionais (if, else if, else)As estruturas condicionais servem para desviar o fluxo da aplicação baseando-se em condições.if: Executa o bloco de código se a condição for verdadeira.else if: Fornece uma nova condição caso a anterior seja falsa (pode haver vários).else: Executa um código padrão caso nenhuma das condições anteriores seja atendida (só pode haver um ao final).Exemplo: Saudação baseada na horaJavaScriptconst hora = 13;
+
+if (hora >= 0 && hora <= 11) {
+    console.log("Bom dia!");
+} else if (hora >= 12 && hora <= 17) {
+    console.log("Boa tarde!");
+} else if (hora >= 18 && hora <= 23) {
+    console.log("Boa noite!");
+} else {
+    console.log("Hora inválida.");
+}
+# Aula 05 - Operador TernárioO operador ternário é um atalho para o if/else quando queremos atribuir um valor baseado em uma condição simples.Sintaxe: (condição) ? valor_se_verdadeiro : valor_se_falso;JavaScriptconst pontosUsuario = 1000;
+const nivelUsuario = pontosUsuario >= 1000 ? 'Usuário VIP' : 'Usuário Normal';
+console.log(nivelUsuario);
+# Aula 06 - Objeto DateO JavaScript utiliza a função construtora new Date() para manipular datas e horas. As datas são baseadas em milissegundos desde a Época Unix (01/01/1970).Métodos Úteis:getDate(): Obtém o dia do mês.getMonth(): Obtém o mês (Atenção: Janeiro é 0, Dezembro é 11).getFullYear(): Obtém o ano com 4 dígitos.getHours(), getMinutes(), getSeconds(): Obtém as horas, minutos e segundos.getDay(): Obtém o dia da semana (0 para Domingo, 6 para Sábado).# Aula 07 - Estrutura switchO switch é utilizado para simplificar múltiplas checagens de igualdade sobre uma mesma variável. É essencial usar a palavra-chave break ao final de cada caso para evitar que o código continue executando os próximos blocos.JavaScriptconst diaSemana = 1;
+let diaSemanaTexto;
+
+switch (diaSemana) {
+    case 0: diaSemanaTexto = 'Domingo'; break;
+    case 1: diaSemanaTexto = 'Segunda'; break;
+    case 2: diaSemanaTexto = 'Terça'; break;
+    default: diaSemanaTexto = '';
+}
+# Aula 08 - Estruturas de Repetição (for, while, do while)As estruturas de repetição (loops) servem para executar um bloco de código várias vezes.for Clássico: Usado quando sabemos exatamente o limite da repetição.for in: Lê os índices de um array ou as chaves de um objeto.for of: Lê os valores de um iterável (como arrays).while: Executa enquanto a condição for verdadeira (checa antes de entrar).do while: Executa pelo menos uma vez e depois checa a condição.Controle de Loops:continue: Pula para a próxima iteração do laço.break: Interrompe e sai do laço completamente.# Aula 09 - Tratamento de Erros (try, catch, finally)Para lidar com códigos que podem gerar erros (ex: falha de conexão, variáveis inexistentes), usamos o bloco try/catch.try: Bloco onde o código "perigoso" é executado.catch: Bloco executado apenas se ocorrer um erro no try.finally: Bloco que sempre é executado, havendo erro ou não (útil para fechar arquivos ou conexões).throw: Comando usado para lançar seus próprios erros personalizados.Glossário de MétodosMétodo / ComandoDescriçãoconsole.log()Exibe informações no console do desenvolvedor.typeofOperador que retorna o tipo de dado de uma variável.isNaN()Função que verifica se um valor não é um número.new Date()Cria um novo objeto de data e hora atual.toLocaleDateString()Formata uma data para o padrão local (ex: pt-BR).setInterval()Executa uma função repetidamente em um intervalo de tempo (ms).setTimeout()Executa uma função uma única vez após um tempo determinado (ms).clearInterval()Interrompe um intervalo criado com setInterval.document.querySelector()Seleciona um elemento do HTML (DOM) usando seletores CSS.createElement()Cria um novo elemento HTML via JavaScript.appendChild()Adiciona um elemento filho a um elemento pai no DOM.
+
+
+
+
+Aqui está a divisão cronológica detectada no texto:
+
+Aula 01: Operadores de Comparação (Maior, menor, igualdade estrita).
+
+Aula 02: Operadores Lógicos (&&, ||, !).
+
+Aula 03: Avaliação de Curto-Circuito (Short-Circuit).
+
+Aula 04: Estruturas Condicionais I (if, else if, else).
+
+Aula 05: Estruturas Condicionais II (Exemplos práticos e lógica de intervalos).
+
+Aula 06: Criação de Modelo HTML/CSS (Preparação de ambiente para exercícios).
+
+Aula 07: Exercício Prático: Cálculo de IMC (Aplicação de lógica e DOM).
+
+Aula 08: Operação Ternária e Objeto Date.
+
+Aula 09: Estrutura Condicional Switch e Exercício de Data.
+
+Aula 10: Atribuição via Desestruturação (Arrays e Objetos).
+
+Aula 11: Estruturas de Repetição (for, while, do while), Tratamento de Erros (try/catch) e Funções de Intervalo (setInterval).

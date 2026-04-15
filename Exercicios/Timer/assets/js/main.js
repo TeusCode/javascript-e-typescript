@@ -1,6 +1,7 @@
 const btnIniciar = document.querySelector('#btnIniciar');
 const btnPausar = document.querySelector('#btnPausar');
 const btnZerar = document.querySelector('#btnZerar');
+const display = document.querySelector('#display');
 
 //Captura evento dos botões:
 btnIniciar.addEventListener('click', iniciarTimer);
@@ -20,7 +21,7 @@ function iniciarTimer() {
     if (isRunning) return;//Se já estiver rodando não faz nada.
     isRunning = true;
     relogio(true);
-    design('black');
+    display.classList.remove('pausado');
 }
 
 function pausarTimer() {
@@ -28,7 +29,7 @@ function pausarTimer() {
         isRunning = false;
         relogio(false);
         console.log(`Relógio pausado!: ${data.toLocaleTimeString()}`);
-        design('red');
+        display.classList.add('pausado');
     }
 }
 
@@ -39,7 +40,7 @@ function zerarTimer() {
         atualizarDisplay();
         console.log("Relógio zerado!")
     }
-    design('black');
+    display.classList.remove('pausado');
 }
 
 function relogio(onOff) {
@@ -57,8 +58,4 @@ function relogio(onOff) {
 function atualizarDisplay() {
     display.innerHTML = data.toLocaleTimeString(); //Mostra no display, o tempo atualizado.
     console.log(data.toLocaleTimeString());
-}
-
-function design(cor) {
-    display.style = `color:${cor};`
 }

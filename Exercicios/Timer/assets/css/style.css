@@ -83,3 +83,7 @@ form button:active {
     width: 80px;
     height: 30px;
 }
+
+.pausado{
+    color: red;
+}
