@@ -12,7 +12,6 @@ document.addEventListener('keypress', (e) => {
     if (!inputTarefa.value) return;
     if (e.key === 'Enter') {
         criarTarefa(inputTarefa.value);
-        console.log(e);
     }
 });
 
@@ -46,14 +45,44 @@ function criarTarefa(texto) {
     li.appendChild(btnApagar);
 
     limpaInput();
+    salvaTarefa(texto);
 }
 
 //Elimina a tarefa li, do botão apagar clicado
 function apagarTarefa(e) {
     e.parentElement.remove();
+    salvaTarefa();
 }
 
+//Limpa o campo de input depois de enviar a terefa.
 function limpaInput() {
     inputTarefa.focus();
     inputTarefa.value = '';
 }
+
+function salvaTarefa() {
+    const liTarefas = listaTarefas.querySelectorAll('li');//Seleciona a lista de tarefas já criada.
+    const listaDeTarefas = [];
+
+    //Itera a nodeList, e adiciona dentro da lista de tarefas:
+    for (let tarefa of liTarefas) {
+        listaDeTarefas.push(tarefa.innerText.replace('Apagar', ''));
+    }
+
+    //Converte em string:
+    const listaJSON = JSON.stringify(listaDeTarefas);
+    localStorage.setItem('tarefas', listaJSON);
+}
+
+function addTarefasSalvas() {
+    const tarefas = localStorage.getItem('tarefas');//Pega as tarefas salvas no localStorage
+    const listaDeTarefas = JSON.parse(tarefas);//Converte de volta para array
+
+    if (!!listaDeTarefas) {
+        for (let tarefa of listaDeTarefas) {
+            criarTarefa(tarefa);
+        };
+    }
+}
+
+addTarefasSalvas()

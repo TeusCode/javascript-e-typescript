@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let i = 0;
+
+        function salvarTarefa(tarefa) {
+            i++
+            localStorage.setItem(`tarefa ${i}`, tarefa);
+            console.log("Foi salvo a tarefa:",localStorage.getItem(`tarefa ${i}`));
+        }
+
+        salvarTarefa('Fazer café');
+        salvarTarefa('Arrumar cama');
+        salvarTarefa('Arrumar casa');
+        salvarTarefa('Jogar');
+    </script>
+</body>
+
+</html>
