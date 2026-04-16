@@ -17,17 +17,17 @@ document.addEventListener('keypress', (e) => {
 });
 
 //Cria somente o elemento li, que vai abrigar a tarefa
-function criaLi(){
+function criaLi() {
     const li = document.createElement('li');
     return li;
 }
 
 //Cria o botão apagar de cada tarefa, e adiciona o observador para esperar o click
-function criaBtnApagar(li){
+function criaBtnApagar(li) {
     li.innerText = ' ';
-    const btnApagar = document.createElement('button'); 
+    const btnApagar = document.createElement('button');
     btnApagar.innerText = 'Apagar';
-    btnApagar.addEventListener('click',function (e){
+    btnApagar.addEventListener('click', function (e) {
         apagarTarefa(e.target)
     });
     return btnApagar;
@@ -38,17 +38,22 @@ function criarTarefa(texto) {
     //Cria os Elemento:
     const li = criaLi();
     const btnApagar = criaBtnApagar(li);
-    
-    li.innerText = texto;  
+
+    li.innerText = texto;
     li.classList.add('itemTarefa');
     btnApagar.classList.add('btn');
     listaTarefas.appendChild(li)
     li.appendChild(btnApagar);
 
-    inputTarefa.value = '';
+    limpaInput();
 }
 
 //Elimina a tarefa li, do botão apagar clicado
-function apagarTarefa(e){
+function apagarTarefa(e) {
     e.parentElement.remove();
+}
+
+function limpaInput() {
+    inputTarefa.focus();
+    inputTarefa.value = '';
 }
