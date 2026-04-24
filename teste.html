@@ -10,17 +10,17 @@
 <body>
     <script>
         let i = 0;
+function retornaFuncao(){
+    let nome = 'pedro';
+    return function (){
+        return nome;
+    }
+}
 
-        function salvarTarefa(tarefa) {
-            i++
-            localStorage.setItem(`tarefa ${i}`, tarefa);
-            console.log("Foi salvo a tarefa:",localStorage.getItem(`tarefa ${i}`));
-        }
+const funcao = retornaFuncao();
 
-        salvarTarefa('Fazer café');
-        salvarTarefa('Arrumar cama');
-        salvarTarefa('Arrumar casa');
-        salvarTarefa('Jogar');
+console.dir(funcao);
+console.log(funcao);
     </script>
 </body>
 
