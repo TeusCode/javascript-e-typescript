@@ -61,4 +61,4 @@ function criarCalculadora() {
 }
 
 const calculadora = criarCalculadora();
-calculadora.iniciar();
+calculadora.iniciar();//Inicia a calculadora
