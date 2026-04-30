@@ -12,37 +12,30 @@ function Calculadora(){//Function Construtora de objetos!
                 return;
             }
 
-                display.value = String(resultado);
+        display.value = String(resultado);
         }catch(e){ //Se der erro:
-            alert("Valores inválidos!")
-            console.log(e)
+            alert("Valores inválidos!");
+            console.log(e);
             return;
         }  
     };
     const carregaBotoes = () =>{
         document.addEventListener('click', (e) => {
         const el = e.target;
-            if (el.classList.contains('btn-num')) {
-                display.value += el.textContent;
-                }
-            if (el.classList.contains('btn-limpar')) {
-                display.value = "";
-            }
-            if (el.classList.contains('btn-result')) {
-                calcula();
-            }
-            if(el.classList.contains('btn-del')){
-                    let del = display.value;
-                    del = del.slice(0,-1);
-                    display.value = del;
-            }
+            if (el.classList.contains('btn-num')) addDisplay(el);
+            if (el.classList.contains('btn-limpar')) limparDisplay();
+            if (el.classList.contains('btn-result')) calcula();
+            if(el.classList.contains('btn-del')) apagaDisplay();
         });
     };
     const enviarComEnter = () =>{
-        document.addEventListener('keypress', (e) => {
+        document.addEventListener('keyup', (e) => {
             if (e.key === 'Enter') calcula()
         });
     };
+    const addDisplay = (el) => display.value += el.textContent;
+    const limparDisplay = () => display.value = "";
+    const apagaDisplay = () => display.value = display.value.slice(0,-1);
 
     //Públicos:
     this.inicia = () =>{
