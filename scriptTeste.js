@@ -1,5 +1,5 @@
+const nomes = ["Maria", "João", "Pedro", "Gustavo"];       
+console.log(nomes);
 
-//Função que executa automaticamente: 
-(()=>{
-  console.log('ola')
-})();
+nomes.splice(-1,1);
+console.log(nomes);
