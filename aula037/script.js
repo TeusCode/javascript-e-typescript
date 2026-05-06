@@ -38,3 +38,4 @@ const aumento = precos.map((obj)=>{
   }
 });
 console.log(aumento);
+// [ { nome: 'Livro', valor: 55 }, { nome: 'Caneta', valor: 5.5 } ]
