@@ -32,7 +32,9 @@ const precos = [
 ];
 
 const aumento = precos.map((obj)=>{
-  const novoObjeto = {...obj};
-  return novoObjeto.valor = (novoObjeto.valor * 1.1).toFixed(2);
+  return {
+    ...obj,
+    valor: Number((obj.valor * 1.1).toFixed(2))
+  }
 });
-// [ '55.00', '5.50' ]
+console.log(aumento);
