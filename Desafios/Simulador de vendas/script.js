@@ -164,24 +164,37 @@ function exibirItens() {
 
 function buscarItens(item) {
     listaDisplay.innerHTML = ''
-    for (let i of itens) {
-        if (i.nome.includes(item)) {
-            listaDisplay.innerHTML += `<li class="item"><img style = "width:100px; height:70px" src="${i.imagem}"> ${i.nome}: R$${i.preco} - ${i.categoria}  </li>`
+    const busca = itens.filter((valor) => {
+        const logica = valor.nome.toUpperCase().includes(item.toUpperCase());
+        if (logica) {
+            listaDisplay.innerHTML += `<li class="item"><img style = "width:100px; height:70px" src="${valor.imagem}"> ${valor.nome}: R$${valor.preco} - ${valor.categoria}  </li>`
         }
+
         if (item === '') {
-            setTimeout(() => {
-                exibirItens();
-                console.log("RECARREGOU!")
-            }, 2000)
+            console.log("RODANDO...")
+            window.location.reload();
         }
-    }
+
+        return logica;
+    })
+
+
+    // for (let i of itens) {
+    //     if (i.nome.includes(item)) {
+    //         listaDisplay.innerHTML += `<li class="item"><img style = "width:100px; height:70px" src="${i.imagem}"> ${i.nome}: R$${i.preco} - ${i.categoria}  </li>`
+    //     }
+    //     if (item === '') {
+    //         setTimeout(() => {
+    //             exibirItens();
+    //             console.log("RECARREGOU!")
+    //         }, 2000)
+    //     }
+    // }
 }
 
-function adicionarCarrinho(e){
+function adicionarCarrinho(e) {
     e.parentElement.style = "display:none;";
     console.log(e.parentElement.textContent);
 }
 
-(function () {
-    exibirItens()
-})();
+exibirItens();
