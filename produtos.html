@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos e Treinamentos - WAMA Engenharia</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Estilos específicos para a página de listagem */
+        .catalog-section {
+            padding: 20px 0 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Botão Voltar */
+        .back-navigation {
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            color: var(--text-white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #333;
+            padding: 10px 20px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+
+        .btn-back:hover {
+            background: #1a1a1a;
+            border-color: var(--primary);
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            margin: 40px 20px 20px;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .category-title span {
+            flex: 1;
+            height: 1px;
+            background: #333;
+            margin-left: 20px;
+        }
+
+        .full-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 20px;
+        }
+
+        /* Card de Produto */
+        .p-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 360px;
+            transition: transform 0.3s ease;
+        }
+
+        .p-card:hover { transform: translateY(-5px); }
+
+        .p-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+        }
+
+        .p-card p {
+            color: #111;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 15px 0;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .p-price {
+            color: #d4a017;
+            font-size: 1.1rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .p-btn {
+            background: #000;
+            color: var(--primary);
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+
+        /* Cards Escuros (Treinamento) */
+        .p-card.dark {
+            background: #151515;
+            border: 1px solid #333;
+        }
+        .p-card.dark p { color: #fff; }
+        .p-card.dark .p-btn { background: var(--primary); color: #000; }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="header-content">
+            <div class="logo-area">
+                <div class="logo-main">W/M</div>
+                <div class="logo-text">WAMA <span>ENGENHARIA</span></div>
+            </div>
+            <div class="nav-services">
+                HIDRÁULICA • PNEUMÁTICA • AUTOMAÇÃO
+            </div>
+            <div class="header-icons">
+                <i class="fab fa-whatsapp"></i>
+                <i class="far fa-envelope"></i>
+                <i class="fab fa-instagram"></i>
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <nav class="back-navigation">
+        <a href="index.html" class="btn-back">
+            <i class="fas fa-arrow-left"></i> VOLTAR PARA A HOME
+        </a>
+    </nav>
+
+    <main class="catalog-section">
+        
+        <div class="category-title">
+            <h2>Wama Supply</h2> <span></span>
+        </div>
+        
+        <div class="full-grid">
+            <div class="p-card">
+                <img src="https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=400">
+                <p>Válvula Esfera Industrial</p>
+                <div class="p-price">R$ 249,90</div>
+                <a href="#" class="p-btn">COMPRAR</a>
+            </div>
+            <div class="p-card">
+                <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=400">
+                <p>Engrenagem de Precisão</p>
+                <div class="p-price">R$ 185,00</div>
+                <a href="#" class="p-btn">COMPRAR</a>
+            </div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1504148455328-4972fefeb7c0?w=400"><p>Manômetro Digital</p><div class="p-price">R$ 420,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=400"><p>Disjuntor Motor</p><div class="p-price">R$ 158,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a1930?w=400"><p>Motor Trifásico</p><div class="p-price">R$ 890,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1530124560612-3be9a28a0edc?w=400"><p>Bomba Hidráulica</p><div class="p-price">R$ 1.150,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1589793463308-658ed4225283?w=400"><p>Sensor de Presença</p><div class="p-price">R$ 95,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1617332140134-8b61917b1897?w=400"><p>Filtro Regulador</p><div class="p-price">R$ 210,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?w=400"><p>Painel de Comando</p><div class="p-price">R$ 3.200,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=400"><p>Cabo Blindado 10m</p><div class="p-price">R$ 145,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+        </div>
+
+        <div class="category-title">
+            <h2>Wama Treinamentos</h2> <span></span>
+        </div>
+
+        <div class="full-grid">
+            <div class="p-card dark">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400">
+                <p>Curso NR-10 Online</p>
+                <div class="p-price">R$ 197,00</div>
+                <a href="#" class="p-btn">MATRICULAR</a>
+            </div>
+            <div class="p-card dark">
+                <img src="https://images.unsplash.com/photo-1581092921461-7d1568637530?w=400">
+                <p>Mestre em CLP Siemens</p>
+                <div class="p-price">R$ 497,00</div>
+                <a href="#" class="p-btn">MATRICULAR</a>
+            </div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400"><p>Mentoria In-Company</p><div class="p-price">CONSULTAR</div><a href="#" class="p-btn">CONTATO</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400"><p>E-book Hidráulica</p><div class="p-price">R$ 47,00</div><a href="#" class="p-btn">BAIXAR</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400"><p>Workshop de Válvulas</p><div class="p-price">R$ 250,00</div><a href="#" class="p-btn">RESERVAR</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=400"><p>Leitura de Diagramas</p><div class="p-price">R$ 120,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400"><p>Gestão de Manutenção</p><div class="p-price">R$ 890,00</div><a href="#" class="p-btn">COMPRAR</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1454165205744-3b78555e5572?w=400"><p>Simulador Industrial</p><div class="p-price">R$ 59,00</div><a href="#" class="p-btn">ASSINAR</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=400"><p>Suporte Técnico VIP</p><div class="p-price">R$ 290,00</div><a href="#" class="p-btn">ASSINAR</a></div>
+            <div class="p-card dark"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400"><p>Certificação Global</p><div class="p-price">R$ 1.200,00</div><a href="#" class="p-btn">MATRICULAR</a></div>
+        </div>
+
+    </main>
+
+</body>
+</html>

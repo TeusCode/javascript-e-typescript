@@ -40,13 +40,18 @@ const pessoas = [
 const pessoasPorIdade = pessoas.reduce( (obj,valor)=>{
     const nome = valor.nome;
     const idade = valor.idade;
+    //Curto circuito:
+    //Cuito circuito de OU, o segundo valor é padrão se o primeiro não for verdadeiro!
+    obj[idade] = obj[idade] || []
+    obj[idade].push(nome);//De qualquer forma ele fará um push
 
-    if(obj[idade]){
-        obj[idade].push(nome);
-    }else{
-        obj[idade] = [];
-        obj[idade].push(nome);
-    }
+    //Código maior
+    // if(obj[idade]){
+    //     obj[idade].push(nome);
+    // }else{
+    //     obj[idade] = [];
+    //     obj[idade].push(nome);
+    // }
     return obj;
 },{})
 

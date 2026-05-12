@@ -1,0 +1,180 @@
+:root {
+    --primary: #f3b121;
+    --bg-black: #000000;
+    --bg-dark: #0d0d0d;
+    --card-grey: #1a1a1a;
+    --text-white: #ffffff;
+    --text-muted: #a0a0a0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-black);
+    color: var(--text-white);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* NAVBAR */
+.navbar {
+    background: var(--bg-black);
+    padding: 15px 0;
+    border-bottom: 1px solid #222;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-main { font-size: 24px; font-weight: 900; line-height: 1; }
+.logo-text { font-size: 18px; font-weight: bold; }
+.logo-text span { display: block; font-size: 10px; color: var(--text-muted); letter-spacing: 2px; }
+
+.nav-services { font-weight: bold; letter-spacing: 1px; color: var(--text-muted); }
+
+.header-icons { display: flex; gap: 20px; font-size: 1.2rem; }
+.header-icons i { cursor: pointer; transition: color 0.3s; }
+.header-icons i:hover { color: var(--primary); }
+
+/* HERO CARDS */
+.hero-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.hero-card {
+    height: 380px;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid #333;
+    background-size: cover;
+    background-position: center;
+}
+
+.supply { background-image: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=800&q=80'); }
+.treinamentos { background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80'); }
+
+.overlay {
+    background: linear-gradient(to right, rgba(0,0,0,0.9) 30%, transparent);
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-card h1 { color: var(--primary); font-size: 2.5rem; margin-bottom: 10px; }
+.hero-card h1 span { color: white; }
+.hero-card p { max-width: 450px; }
+.hero-card .subtext { font-size: 0.85rem; color: var(--text-muted); margin: 15px 0 25px; }
+
+.btn-yellow {
+    background: var(--primary);
+    color: black;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    width: fit-content;
+    text-transform: uppercase;
+}
+
+/* BENEFITS */
+.benefits-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 30px 0;
+    border-bottom: 1px solid #222;
+}
+
+.benefit-item { display: flex; align-items: center; gap: 15px; }
+.benefit-item i { color: var(--primary); font-size: 1.5rem; }
+.benefit-item strong { display: block; font-size: 0.9rem; }
+.benefit-item span { font-size: 0.7rem; color: var(--text-muted); }
+
+/* SECTIONS TITLES */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+}
+.section-divider h2 { margin: 0 20px; font-size: 1.5rem; letter-spacing: 2px; }
+.section-divider span { flex: 1; height: 1px; background: #333; max-width: 150px; }
+
+/* FEEDBACKS */
+.feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+.f-card {
+    background: var(--bg-dark);
+    padding: 20px;
+    border: 1px solid #222;
+    border-radius: 8px;
+}
+.stars { color: var(--primary); margin-bottom: 10px; }
+
+/* DESTAQUES */
+.destaques-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.destaque-col h3 { margin-bottom: 20px; font-size: 1.1rem; }
+.product-row { display: flex; gap: 10px; margin-bottom: 20px; }
+
+.product-card {
+    background: white;
+    color: black;
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.p-img, .p-img-empty { height: 80px; background: #f0f0f0; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+.p-img.dark { background: #222; color: white; }
+.product-card p { font-size: 0.75rem; font-weight: bold; margin: 10px 0; min-height: 35px; }
+.p-stars { color: var(--primary); font-size: 0.7rem; }
+
+.btn-footer {
+    display: block;
+    background: var(--primary);
+    color: black;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/* RESPONSIVIDADE DESKTOP */
+@media (min-width: 992px) {
+    .hero-section { flex-direction: row; }
+    .hero-card { flex: 1; }
+}
+
+@media (max-width: 768px) {
+    .feedback-grid, .destaques-grid { grid-template-columns: 1fr; }
+    .nav-services { display: none; }
+}
