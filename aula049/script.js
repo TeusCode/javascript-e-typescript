@@ -12,7 +12,6 @@ const resultado = produtos.reduce((acc, cur) => {
   } else {
     acc.outros.push(cur);
   }
-
   return acc;
 }, {
   eletronicos: [], outros: []
