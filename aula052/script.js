@@ -9,7 +9,19 @@ const obj = {
   },
 };
 
-Object.freeze(obj); //Trava os valores padrões do objeto!
+// Object.freeze(obj); //Trava os valores padrões do objeto!
+Object.defineProperties(obj, {
+  nome: {
+    enumerable: true,
+    writable: true,
+    configurable: false
+  },
+  sobrenome: {
+    enumerable: true,
+    writable: true,
+    configurable: false
+  }
+});
 
-obj.setarNome = "Willian";
+obj.setarNome = "Pedro";
 obj.nomeCompleto;
