@@ -23,7 +23,6 @@ Agora jogamos na formula:
 2° dígito = 3
 */
 const cpf = '507.539.210-57';
-
 const cpfLimpo = cpf.replace(/\D+/g, '');//Remove caracteres . e -
 const cpfCalculo = cpfLimpo.slice(0,9);  //Remove os dois últimos dígitos
 //Não é possivel ler uma string com o map, por isso transformamos em um array
