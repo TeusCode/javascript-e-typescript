@@ -27,14 +27,14 @@ const cpf = "594.925.810-00";//Cpf original
 const cpfLimpo = cpf.replace(/\D+/g, '');//CPF limpo, sem os . e -
 
 function calculoCpf(operacao) {
-    let cpfDigitos = operacao === 1 ? cpfLimpo.split('').slice(0, -2) : cpfLimpo.split('').slice(0, -1);
-    let controle = operacao === 1 ? 10 : 11;
-    let calculoDigito;
+    let cpfDigitos = operacao === 1 ? cpfLimpo.split('').slice(0, -2) : cpfLimpo.split('').slice(0, -1);
+    let controle = operacao === 1 ? 10 : 11;
+    let calculoDigito;
 
-    calculoDigito = cpfDigitos.map(digito => digito * controle--)
-        .reduce((acc, cur) => acc + cur, 0);
+    calculoDigito = cpfDigitos.map(digito => digito * controle--)
+    .reduce((acc, cur) => acc + cur, 0);
 
-    return calculoDigito;
+    return calculoDigito;
 }
 
 let digito1 = (11 - (calculoCpf(1) % 11)) >= 10?0:11 - (calculoCpf(1) % 11);
