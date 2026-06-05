@@ -30,7 +30,6 @@ function ContaC(agencia, conta, saldo, limite) {//Conta Corrente
   this.limite = limite;
   Conta.call(this, agencia, conta, saldo);//Herda essas propriedades da classe Conta
 }
-
 ContaC.prototype = Object.create(Conta.prototype);//Herda o prototype;
 ContaC.prototype.constructor = ContaC;//Volta o construtor para a ContaC
 
