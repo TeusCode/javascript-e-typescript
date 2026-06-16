@@ -14,7 +14,33 @@ class validaFormulario {
     handleSubmit(e){
         e.preventDefault();//Desativa o comportamento padrão do submit
         const camposValidos = this.camposValidos();//Verifica se os campos obedecem as condições
-       
+        const senhasValidas = this.senhasSaoValidas(); 
+
+        console.log(camposValidos, senhasValidas)
+
+        if(camposValidos && senhasValidas){
+            alert("Formulário enviado!")
+            this.formulario.submit()
+        }
+    }
+
+    senhasSaoValidas(){
+        let valid = true;
+        
+        const senha = this.formulario.querySelector(".senha");
+        const repetirSenha = this.formulario.querySelector(".repetir-senha");
+        
+        if(senha.value !== repetirSenha.value){
+            valid = false;
+            this.criarErro(senha, "As senhas devem ser iguais")
+            this.criarErro(repetirSenha, "As senhas devem ser iguais")
+        }
+        if(senha.value.length < 6 || senha.value.length > 12){
+            valid = false;
+            this.criarErro(senha, "As senhas devem ter entre 6 e 12 caracteres")
+        }
+
+        return valid;
     }
 
     camposValidos(){
@@ -48,22 +74,26 @@ class validaFormulario {
         return valid;
     }
 
-    validaUsuario(campo){
+    validaUsuario(campo){       
         const usuario = campo.value;
-        valid = true;
+        let valid = true;
 
         if(usuario.length < 3 || usuario.length > 12){
             this.criarErro(campo,`O Usuário, deve conter entre 3 e 12 caracteres`)
+            valid = false;
         }
         
         return valid;
     }
     
     validaCPF(campoCpf){
+        let valid = true;
         const cpf = new ValidaCpf(campoCpf.value);
         if(!cpf.valida()){
             this.criarErro(campoCpf,"Cpf inválido!");
+            valid = false;
         };
+        return valid;
     }
 
     criarErro(campo, msg){
