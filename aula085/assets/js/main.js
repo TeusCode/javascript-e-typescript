@@ -1,3 +1,4 @@
+const body = document.querySelector('body');
 class validaFormulario {
     constructor(){
         this.formulario = document.querySelector('.formulario');
@@ -107,3 +108,8 @@ class validaFormulario {
 }
 
 const valida = new validaFormulario();
+console.log(body);
+
+body.addEventListener('click',()=>{
+    console.log("Você clicou no body");
+})
