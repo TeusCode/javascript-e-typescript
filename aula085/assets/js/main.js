@@ -20,10 +20,8 @@ class validaFormulario {
     camposValidos(){
         let valid = true;
         
-
         //Limpa campos
-        for(let campo of this.formulario.querySelectorAll('.erro-msg')){
-            
+        for(let campo of this.formulario.querySelectorAll('.erro-msg')){    
             if(campo.classList.contains('erro-msg')){
                 campo.classList.remove('erro-msg');
                 campo.innerHTML = '';
@@ -33,7 +31,6 @@ class validaFormulario {
         for(let campo of this.formulario.querySelectorAll('.validar')){// Lê os elementos do formulário (OBS. label, fieldset etc... NÃO SÃO CONSIDERADOR DADOS DE ENTRADA, PORTANTO NAO FAZEM PARTE DA COLEÇÃO DE ELEMENTOS)
             const label = campo.previousElementSibling.innerText;
             
-
             //Valida, se o campo está em branco
             if(!campo.value){
                 valid = false;
@@ -43,13 +40,28 @@ class validaFormulario {
             if(campo.classList.contains('cpf')){
                 if(!this.validaCPF(campo)) valid = false;
             }
+            //Valida, se o usuário é válido
+            if(campo.classList.contains('usuario')){
+                if(!this.validaUsuario(campo)) valid = false;
+            }
         }
         return valid;
     }
 
+    validaUsuario(campo){
+        const usuario = campo.value;
+        valid = true;
+
+        if(usuario.length < 3 || usuario.length > 12){
+            this.criarErro(campo,`O Usuário, deve conter entre 3 e 12 caracteres`)
+        }
+        
+        return valid;
+    }
+    
     validaCPF(campoCpf){
         const cpf = new ValidaCpf(campoCpf.value);
-        if(cpf.valida()){
+        if(!cpf.valida()){
             this.criarErro(campoCpf,"Cpf inválido!");
         };
     }

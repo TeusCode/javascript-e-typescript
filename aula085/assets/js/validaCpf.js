@@ -14,14 +14,15 @@ class ValidaCpf {
   }
 
   valida() {
-    if (typeof this.cpfLimpo === "undefined") return false;
-    if (typeof this.cpfLimpo.length !== 11) return false;
+    if (!this.cpfLimpo) return false;
+    if (typeof this.cpfLimpo !== "string") return false;
+    if (  this.cpfLimpo.length !== 11) return false;
     if (this.isSequencia(this.cpfLimpo)) return false;
 
     const cpfParcial = this.cpfLimpo.slice(0, -2);
     const digito1 = this.criaDigito(cpfParcial);
     const digito2 = this.criaDigito(cpfParcial + digito1);
-    const novoCpf = cpfParcial + digito1 + digito2;
+    const novoCpf = cpfParcial + digito1 + digito2; 
 
     this.newCpf = novoCpf;
 
