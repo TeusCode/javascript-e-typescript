@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Site</title>
+</head>
+
+<body>
+    <div class="container">
+        </section>
+
+<script src="https://unpkg.com/axios@1.13.2/dist/axios.min.js"></script>
+        <script>
+            axios("https://jsonplaceholder.typicode.com/photos?albumId=1")
+                .then(resposta => {
+                    console.log(resposta);
+                    console.log(resposta.data);
+                    console.log(`Tamanho do Objeto: ${resposta.length}`);
+                    console.log(`Primeira foto: ${resposta[0].thumbnailUrl}`);
+                })
+
+                // .then(data => {
+                //     console.log(`Tamanho do Objeto: ${data.length}`);
+                //     console.log(`Primeira foto: ${data[0].thumbnailUrl}`);
+
+                // });
+        </script>
+</body>
+
+</html>
