@@ -65,7 +65,7 @@ ValidaCpf.prototype.isSequencia = function(cpf){
   return sequencia === this.cpfLimpo;
 }
 
-const cpf = new ValidaCpf("070.987.720-03");
+const cpf = new ValidaCpf("070.987.720-02");
 
 console.log("O CPF:",cpf.cpfEnviado)
 

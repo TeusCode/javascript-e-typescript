@@ -1,3 +1,3 @@
-import {gerador} from "./modulo1";
+import {gera} from "./modulo1";
 
-console.log(gerador());
+console.log(gera());
