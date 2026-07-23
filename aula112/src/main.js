@@ -1,9 +1,6 @@
 import './assets/css/style.css';
-import GeradorDeSenha from './modules/geradorSenhas';
-const gerador = new GeradorDeSenha();
-
+import gerador from './modules/GeraMelhorado.js';
 const quantidade = document.querySelector('.inserir');
-
 const checkNumbers = document.querySelector('#checkNumbers');
 const checkMaiusculas = document.querySelector('#checkMaiusculas');
 const checkMinusculas = document.querySelector('#checkMinusculas');
@@ -38,9 +35,12 @@ btnGerar.addEventListener('click', () => {
         config.simbolos = true;
     }
 
-    if(config.numbers || config.maiusculas || config.minusculas || config.simbolos){
-    display.innerHTML = gerador.montarSenha(quantidade.value, config.numbers, config.maiusculas, config.minusculas, config.simbolos);
+    if (config.numbers || config.maiusculas || config.minusculas || config.simbolos) {
+        const senhaGerada = gerador(quantidade.value, config.maiusculas, config.minusculas, config.simbolos, config.numbers)
+        display.innerHTML = senhaGerada;
+        console.log(`A senha gerada tem ${senhaGerada.length} caracteres!`);
     }
+
 
 })
 

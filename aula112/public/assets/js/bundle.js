@@ -2,81 +2,43 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/modules/geradorSenhas.js"
+/***/ "./src/modules/GeraMelhorado.js"
 /*!**************************************!*\
-  !*** ./src/modules/geradorSenhas.js ***!
+  !*** ./src/modules/GeraMelhorado.js ***!
   \**************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ GeradorDeSenha)
+/* harmony export */   "default": () => (/* binding */ montaSenha)
 /* harmony export */ });
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
-function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
-function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-var GeradorDeSenha = /*#__PURE__*/function () {
-  function GeradorDeSenha() {
-    _classCallCheck(this, GeradorDeSenha);
+//Converte códigos em caracteres, tradução: tabela ascii
+var rand = function rand(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+var geraLetra_M = function geraLetra_M() {
+  return String.fromCharCode(rand(65, 90));
+};
+var geraLetra_m = function geraLetra_m() {
+  return String.fromCharCode(rand(97, 122));
+};
+var geraSimbolos = function geraSimbolos() {
+  return String.fromCharCode(rand(33, 47));
+};
+var geraNumeros = function geraNumeros() {
+  return String.fromCharCode(rand(48, 57));
+};
+function montaSenha(qnt, maiusculas, minusculas, simbolos, num) {
+  Number(qnt);
+  var senha = [];
+  for (var i = 0; i < qnt; i++) {
+    maiusculas && senha.push(geraLetra_M());
+    minusculas && senha.push(geraLetra_m());
+    simbolos && senha.push(geraSimbolos());
+    num && senha.push(geraNumeros());
   }
-  return _createClass(GeradorDeSenha, [{
-    key: "geraNumeros",
-    value: function geraNumeros() {
-      return Math.floor(Math.random() * (9 - 0 + 1) - 0);
-    }
-  }, {
-    key: "geraLetras",
-    value: function geraLetras() {
-      var maiusculas = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-      var letrasM = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-      var indiceAletorio = Math.floor(Math.random() * (letrasM.length - 1 - 0 + 1) - 0);
-      if (maiusculas) {
-        return letrasM[indiceAletorio];
-      } else {
-        return letrasM[indiceAletorio].toLowerCase();
-      }
-    }
-  }, {
-    key: "geraCaracteres",
-    value: function geraCaracteres() {
-      var caracteres = ['!', '@', '#', '$', '%', '&', '*', '(', ')', '-', '_', '=', '+', '[', ']', '{', '}', ';', ':', ',', '.', '<', '>', '/', '?'];
-      var indiceAletorio = Math.floor(Math.random() * (caracteres.length - 1 - 0 + 1) - 0);
-      return caracteres[indiceAletorio];
-    }
-  }, {
-    key: "montarSenha",
-    value: function montarSenha(qnt) {
-      var _this = this;
-      var numero = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var maiusculas = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-      var minusculas = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
-      var simbolos = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-      var senha = '';
-      var funcoes = [];
-      if (numero) funcoes.push(function () {
-        return _this.geraNumeros();
-      });
-      if (maiusculas) funcoes.push(function () {
-        return _this.geraLetras(true);
-      });
-      if (minusculas) funcoes.push(function () {
-        return _this.geraLetras(false);
-      });
-      if (simbolos) funcoes.push(function () {
-        return _this.geraCaracteres();
-      });
-      for (var i = 0; i < qnt; i++) {
-        var func = funcoes[Math.floor(Math.random() * funcoes.length)];
-        senha += func();
-      }
-      return senha;
-    }
-  }]);
-}();
-
+  return senha.join('').slice(0, qnt);
+}
 
 /***/ },
 
@@ -742,10 +704,9 @@ let __webpack_exports__ = {};
   \*********************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _assets_css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./assets/css/style.css */ "./src/assets/css/style.css");
-/* harmony import */ var _modules_geradorSenhas__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/geradorSenhas */ "./src/modules/geradorSenhas.js");
+/* harmony import */ var _modules_GeraMelhorado_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/GeraMelhorado.js */ "./src/modules/GeraMelhorado.js");
 
 
-var gerador = new _modules_geradorSenhas__WEBPACK_IMPORTED_MODULE_1__["default"]();
 var quantidade = document.querySelector('.inserir');
 var checkNumbers = document.querySelector('#checkNumbers');
 var checkMaiusculas = document.querySelector('#checkMaiusculas');
@@ -775,7 +736,9 @@ btnGerar.addEventListener('click', function () {
     config.simbolos = true;
   }
   if (config.numbers || config.maiusculas || config.minusculas || config.simbolos) {
-    display.innerHTML = gerador.montarSenha(quantidade.value, config.numbers, config.maiusculas, config.minusculas, config.simbolos);
+    var senhaGerada = (0,_modules_GeraMelhorado_js__WEBPACK_IMPORTED_MODULE_1__["default"])(quantidade.value, config.maiusculas, config.minusculas, config.simbolos, config.numbers);
+    display.innerHTML = senhaGerada;
+    console.log("A senha gerada tem ".concat(senhaGerada.length, " caracteres!"));
   }
 });
 })();
