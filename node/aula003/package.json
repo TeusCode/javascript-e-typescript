@@ -9,8 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "devDependencies": {
-    "express": "^4.22.2"
-  }
+  "type": "commonjs"
 }
