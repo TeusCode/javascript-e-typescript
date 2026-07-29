@@ -1,0 +1,10 @@
+{
+  "usuario": "Carlos Silva",
+  "idade": 28,
+  "ativo": true,
+  "habilidades": ["JavaScript", "Node.js", "Express"],
+  "endereco": {
+    "cidade": "Belo Horizonte",
+    "estado": "MG"
+  }
+}

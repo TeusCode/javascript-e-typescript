@@ -1,0 +1,5 @@
+[2026-07-28 10:00:00] - Sistema iniciado com sucesso.
+[2026-07-28 10:05:12] - Usuário 'Carlos' realizou login.
+[2026-07-28 10:15:40] - Erro ao conectar com o banco de dados secundário. Tentando reconectar...
+[2026-07-28 10:15:45] - Reconexão bem-sucedida.
+[2026-07-28 11:00:00] - Backup diário concluído.
