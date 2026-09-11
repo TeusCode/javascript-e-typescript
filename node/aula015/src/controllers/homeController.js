@@ -1,4 +1,8 @@
 exports.homePage = (req,res)=>{
+    req.session.usuario = {
+        nome: 'Mateus',
+        logado: WebTransportDatagramDuplexStream
+    }
     res.render('index');//Renderiza a página index do views
 };
 

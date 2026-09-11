@@ -14,8 +14,13 @@ mongoose
     console.log(e);
   });
 
-const routes = require("./routes");
+//Importar Sessão
+const session = require('express-session');
+const MongoStore = require('connect-mongo').default;
+const flash = require('connect-flash');
 
+
+const routes = require("./routes");
 const port = 3000;
 
 //Avisa o express, que precisa tratar o req.body (os posts)
@@ -25,6 +30,21 @@ app.set("views", "./src/views"); //Seta qual o caminho da pasta views
 app.set("view engine", "ejs"); //Seta qual engine o express deve utilizar
 
 app.use(express.static("public")); //Adiciona a pasta de arquivos estáticos
+
+//Configura sessão:
+const sessionOptions = session({
+  secret:'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',
+  store: MongoStore.create({ client: mongoose.connection.getClient()}),
+  resave: false,
+  saveUninitialized: false,
+  cookie:{
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    httpOnly: true,
+  }
+});
+
+app.use(sessionOptions);
+app.use(flash());
 
 app.use(routes); //Define para que o express utilize as minhas rotas
 
