@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); //Inicia a configuração do dotenv (Variáveis de ambiente)
 
 const express = require("express");
 const app = express();
@@ -17,17 +17,22 @@ mongoose
 
 //Importar Sessão
 const session = require('express-session');
-const MongoStore = require('connect-mongo').default;
-const flash = require('connect-flash');
+const MongoStore = require('connect-mongo').default;//Utilizado para salvar a sessão no BD, ao invés de lotar a memória ram do sv, com as sessões
+const flash = require('connect-flash');//Mensagens auto destrutivas (flash messages)(São salvas na sessão)
 
+//Rotas
 const routes = require("./routes");
 const port = 3000;
+
+//Imports Middleswares
 const {middlewareGlobal,checkCsrfError,csrfMiddleware} = require('./src/middlewares/middleware');
-const helmet = require('helmet');//Importa o helmet (configura headers)
-const csrf = require('csurf');
+const helmet = require('helmet');//Importa o helmet (configura headers) (Recomendação do express)
+const csrf = require('csurf');//Cria tokens para nossos formulários, para válidação (Impede que outros sites, consigam postar na nossa aplicaçaõ)
 
 //Avisa o express, que precisa tratar o req.body (os posts)
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());//Parsed de Json para dentro da aplicação
+app.use(express.static("public")); //Adiciona a pasta de arquivos estáticos
 
 //Configura sessão:
 const sessionOptions = session({
@@ -48,16 +53,13 @@ app.set("view engine", "ejs"); //Seta qual engine o express deve utilizar
 // (permite salvar dados do usuário, como o login, entre as requisições)
 app.use(sessionOptions);
 app.use(flash());
-
 app.use(helmet());
-
 app.use(csrf());//Injeta um token nas páginas, para garantir que a requisição venha mesmo do nosso servidor
-//Nossos proprios middlewares
+
+//Middlewares
 app.use(csrfMiddleware);
 app.use(middlewareGlobal);
 app.use(checkCsrfError);
-
-app.use(express.static("public")); //Adiciona a pasta de arquivos estáticos
 
 app.use(routes); //Define para que o express utilize as minhas rotas
 
