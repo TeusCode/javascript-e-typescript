@@ -4,10 +4,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+//Conecta ao banco de dados Mongoose
 mongoose
   .connect(process.env.CONNECTIONSTRING)
   .then(() => {
-    app.emit("pronto");
+    app.emit("pronto");//Quando conectado, emite o sinal pronto
     console.log('CONEXÂO EFETUADA!')
   })
   .catch((e) => {
@@ -28,7 +29,7 @@ app.use(express.static("public")); //Adiciona a pasta de arquivos estáticos
 
 app.use(routes); //Define para que o express utilize as minhas rotas
 
-app.on("pronto", () => {
+app.on("pronto", () => { //Recebe o sinal de pronto e inicia o servidor depois da conexão ao banco de dados!
   app.listen(port, () => {
     console.log("Acessar Home: http://localhost:3000");
     console.log(`Servidor rodando na porta ${port}`);

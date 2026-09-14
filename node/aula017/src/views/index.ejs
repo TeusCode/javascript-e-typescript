@@ -1,0 +1,23 @@
+<!--Cola uma parte de outro Html aqui-->
+<!--Faz com que o conteúdo do includes, seja colado aqui, ou em qualquer outro arquivo.ejs que usar essas tags:-->
+<%- include('./includes/head.ejs'); %>
+
+    <section class="container">
+
+        <h1>
+            <% numeros.forEach(n=>{ %>
+                <%= n %>
+            <% }) %>
+        </h1>
+
+        <form action="/" method="post">
+            <label>Cliente</label>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <input type="text" name="cliente">
+            <button>Submit</button>
+        </form>
+    </section>
+
+<%- include('./includes/footer.ejs') %>
+
+ 
