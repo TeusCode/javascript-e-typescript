@@ -6,8 +6,8 @@ exports.middlewareGlobal = (req,res,next)=>{
 
 //Checa se deu erro de autenticação do código do CSRF
 exports.checkCsrfError = (err,req,res,next)=>{
-    if(err && 'EBADCSRFTOKEN' === err.code){
-        return res.send('BAD CSRF.');
+    if(err){
+        return res.render('404');
     }
 }
 
