@@ -26,7 +26,7 @@ const routes = require("./routes");
 const port = 3000;
 
 //Imports Middleswares
-const {middlewareGlobal,checkCsrfError,csrfMiddleware} = require('./src/middlewares/middleware');
+const {middlewareGlobal,checkCsrfError,csrfMiddleware,msgSuccess} = require('./src/middlewares/middleware');
 const helmet = require('helmet');//Importa o helmet (configura headers) (Recomendação do express)
 const csrf = require('csurf');//Cria tokens para nossos formulários, para válidação (Impede que outros sites, consigam postar na nossa aplicaçaõ)
 
