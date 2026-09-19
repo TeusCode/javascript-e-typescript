@@ -18,8 +18,24 @@ class Login{
     this.user = null;
   }
 
+  async login(){
+    this.valida();//Válida credenciais inicialmente
+    this.user = await LoginModel.findOne({email: this.body.email});//Retorna um array com a linha desse e-mail, se existir
+
+    if(!this.user){
+      this.erros.push('Usuário não existe!');
+      return;
+    }
+    if(!bcrypt.compareSync(this.body.password,this.user.password)){
+      this.erros.push('Senha incorreta!');
+      this.user = null;
+      return;
+    }
+  return;
+  }
+
   async register(){
-    this.valida();
+    this.valida();//Válida credenciais inicialmente
     if(this.erros.length > 0) return;
 
     //Verifica se o usuário Existe:
@@ -32,20 +48,12 @@ class Login{
       const salt = bcrypt.genSaltSync();//Gera uma string aleatória
       this.body.password = bcrypt.hashSync(this.body.password, salt);//Aplica o algoritmo bcrypt fundindo a senha original em texto puro, com o salt, e substitui por uma senha criptografada.
 
-    //Tudo que depende de fatores externos, que podem falhar, como (ler arquivos, acessar APIs de terceiros ou mexer em Banco de Dados) precisa de um try catch, para proteger o servidor.
-    try{
-      console.log('Usuário criado!');
       this.user = await LoginModel.create(this.body);//Cria o Usuário no banco de Dados
-    }catch(e){
-      console.log(e);
-    }
-    
   }
 
   async userExists(){
     const user = await LoginModel.findOne({email: this.body.email});//Busca e retorna o primeiro documento da coleção que corresponda corretamente ao campo e-mail informado
     if(user) this.erros.push('Esse usuário já existe!');
-    console.log(user);
     return;
   }
 
