@@ -33,11 +33,11 @@ app.use(express.static("public")); //Adiciona a pasta de arquivos estáticos
 
 //Configura sessão:
 const sessionOptions = session({
-  secret:'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',
-  store: MongoStore.create({ client: mongoose.connection.getClient()}),
+  secret: 'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',
+  store: MongoStore.create({ client: mongoose.connection.getClient() }),
   resave: false,
   saveUninitialized: false,
-  cookie:{
+  cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 7,
     httpOnly: true,
   }
