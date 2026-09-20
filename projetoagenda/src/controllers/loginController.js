@@ -2,6 +2,7 @@ const Login = require('../models/LoginModel');
 const chalk = require('chalk');
 
 exports.index = (req,res)=>{
+    if(req.session.user) return res.render('login-logado');
     res.render('login');
 };
 //Registra user
