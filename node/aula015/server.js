@@ -4,10 +4,11 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+//Conecta ao banco de dados
 mongoose
   .connect(process.env.CONNECTIONSTRING)
   .then(() => {
-    app.emit("pronto");
+    app.emit("pronto");//Sinaliza conexão com o banco
     console.log('CONEXÂO EFETUADA!')
   })
   .catch((e) => {
@@ -43,12 +44,14 @@ const sessionOptions = session({
   }
 });
 
+// Inicializa o middleware de sessão usando as opções definidas em sessionOptions 
+// (permite salvar dados do usuário, como o login, entre as requisições)
 app.use(sessionOptions);
 app.use(flash());
 
 app.use(routes); //Define para que o express utilize as minhas rotas
 
-app.on("pronto", () => {
+app.on("pronto", () => {//Recebe o sinal que o banco de dados foi conectado, e inicia o servidor!
   app.listen(port, () => {
     console.log("Acessar Home: http://localhost:3000");
     console.log(`Servidor rodando na porta ${port}`);
