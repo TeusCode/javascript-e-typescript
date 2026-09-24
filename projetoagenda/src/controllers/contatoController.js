@@ -61,3 +61,14 @@ exports.edit = async (req,res)=>{
         console.log(e);
     }
 };
+
+    exports.delete= async (req,res)=>{
+        if(!req.params.id) return res.redirect('404');
+
+        if(Contato.deletaContato(req.params.id)){
+            req.flash('success', 'Contato deletado com sucesso!');
+            req.session.save(()=>{
+                res.redirect('/');
+            })
+        };
+    };

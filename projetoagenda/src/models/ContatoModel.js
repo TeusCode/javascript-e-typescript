@@ -28,12 +28,6 @@ class Contato {
     this.contato = await ContatoModel.create(this.body);//Cria contato no banco de dados
   }
 
-  static async buscaId(id){ //Buscando no banco de dados pelo id:
-    if(typeof id !== 'string') return;
-    const user = await ContatoModel.findById(id);//Busca usuário pelo id, retorna Obj
-    return user;
-  }
-
   async contatoExists() {
     const contatoTelefone = await ContatoModel.findOne({ telefone: this.body.telefone });//Busca e retorna o primeiro documento da coleção que corresponda corretamente ao campo nome informado
     if (contatoTelefone) this.erros.push('Esse Telefone já existe!');
@@ -73,6 +67,26 @@ class Contato {
   //ModeloUtilizado.EncontreOContatoPorId(identificação,NovoConteúdo(obj), {returnDocument:after "indica que deve ser retornado os novos dados, e não os antigos"})           
   this.contato = await ContatoModel.findByIdAndUpdate(id,this.body, {returnDocument:'after'});
   }
+
+  //Métodos estáticos
+
+  static async buscaId(id){ //Buscando no banco de dados pelo id:
+    if(typeof id !== 'string') return;
+    const user = await ContatoModel.findById(id);//Busca usuário pelo id, retorna Obj
+    return user;
+  }
+
+  static async buscaContatos(){ 
+    const contatos = await ContatoModel.find().sort({criadoEm: 1});//Busca usuários cadastrados nesse modelo
+    return contatos;
+  }
+
+   static async deletaContato(id){ 
+    if(typeof id !== 'string') return;
+    const contatos = await ContatoModel.findByIdAndDelete(id);//Busca usuários cadastrados nesse modelo
+    return contatos;
+  }
+
 }
 
 module.exports = Contato;
