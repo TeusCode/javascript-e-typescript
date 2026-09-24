@@ -1,47 +1,56 @@
 <%- include('./includes/head')%>
-<%- include('./includes/navbar') %>
+    <%- include('./includes/navbar') %>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-2"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2"></div>
 
-        <div class="col-lg-8 my-3">
-            <h1 class="display-2 text-center my-3">Agenda</h1>
-            <p class="text-center lead">Seus contatos estão abaixo</p>
+                <div class="col-lg-8 my-3">
+                    <h1 class="display-2 text-center my-3">Agenda</h1>
+                    <p class="text-center lead">Seus contatos estão abaixo</p>
 
-            <%- include('./includes/messages') %>
+                    <%- include('./includes/messages') %>
 
-            <% if(contatos.length > 0){%>
-                <div class="responsive-table">
-                <table class="table my-3">
-                    <th>
-                        <tr>
-                        <td><strong>Nome</strong></td>
-                        <td><strong>Sobrenome</strong></td>
-                        <td><strong>E-mail</strong></td>
-                        <td><strong>Telefone</strong></td>
-                        </tr>
-                    </th>
-                <% contatos.forEach((contato) => { %>
-                <tr>
-                    <td><%= contato.nome %></td>
-                    <td><%= contato.sobrenome %></td>
-                    <td><%= contato.email %></td>
-                    <td><%= contato.telefone %></td>
-                    <td><a href="/contato/index/<%= contato._id%>">Editar</a></td>
-                    <td><a class="text-danger" href="/contato/delete/<%= contato._id%>">Deletar</a></td>
-                </tr>
-                <% }) %>
-                </table>
+                        <% if(contatos.length> 0){%>
+                            <div class="responsive-table">
+                                <table class="table my-3">
+                                    <th>
+                                        <tr>
+                                            <td><strong>Nome</strong></td>
+                                            <td><strong>Sobrenome</strong></td>
+                                            <td><strong>E-mail</strong></td>
+                                            <td><strong>Telefone</strong></td>
+                                        </tr>
+                                    </th>
+                                    <% contatos.forEach((contato)=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= contato.nome %>
+                                            </td>
+                                            <td>
+                                                <%= contato.sobrenome %>
+                                            </td>
+                                            <td>
+                                                <%= contato.email %>
+                                            </td>
+                                            <td>
+                                                <%= contato.telefone %>
+                                            </td>
+                                            <td><a href="/contato/index/<%= contato._id%>">Editar</a></td>
+                                            <td><a class="text-danger"
+                                                    href="/contato/delete/<%= contato._id%>">Deletar</a></td>
+                                        </tr>
+                                        <% }) %>
+                                </table>
+                            </div>
+                            <%}else{%>
+                                <p class="text-center lead">Não existem contatos na sua Agenda!</p>
+                                <%}%>
+
+                </div>
+
+                <div class="col-lg-2"></div>
             </div>
-            <%}else{%>
-                <p class="text-center lead">Não existem contatos na sua Agenda!</p>
-            <%}%>
-
         </div>
 
-        <div class="col-lg-2"></div>
-    </div>
-</div>
-
-<%- include('./includes/footer')%>
+        <%- include('./includes/footer')%>

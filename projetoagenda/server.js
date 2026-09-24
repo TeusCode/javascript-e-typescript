@@ -26,7 +26,7 @@ const routes = require("./routes");
 const port = 3000;
 
 //Imports Middleswares
-const {middlewareGlobal,checkCsrfError,csrfMiddleware,msgSuccess} = require('./src/middlewares/middleware');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware, msgSuccess } = require('./src/middlewares/middleware');
 const helmet = require('helmet');//Importa o helmet (configura headers) (Recomendação do express)
 const csrf = require('csurf');//Cria tokens para nossos formulários, para válidação (Impede que outros sites, consigam postar na nossa aplicaçaõ)
 
@@ -34,14 +34,15 @@ const csrf = require('csurf');//Cria tokens para nossos formulários, para váli
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());//Parsed de Json para dentro da aplicação
 app.use(express.static("public")); //Adiciona a pasta de arquivos estáticos
+app.use('/frontend', express.static('frontend'));
 
 //Configura sessão:
 const sessionOptions = session({
-  secret:'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',
-  store: MongoStore.create({ client: mongoose.connection.getClient()}),
+  secret: 'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',
+  store: MongoStore.create({ client: mongoose.connection.getClient() }),
   resave: false,
   saveUninitialized: false,
-  cookie:{
+  cookie: {
     maxAge: 1000 * 60 * 60 * 24 * 7,
     httpOnly: true,
   }
