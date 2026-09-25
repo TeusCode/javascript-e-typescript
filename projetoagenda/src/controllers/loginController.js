@@ -16,6 +16,7 @@ exports.register = async (req, res) => {
             req.session.save(() => {// Salva a Sessão que no momento, só tem os dados dos flashs, para que eles não se percam, quando for redirecionada a rota
                 return res.redirect('/login/index');
             });
+            return;
         }
         console.log(chalk.bgGreen('Usuário criado com sucesso!'));
         req.flash('success', 'Seu usuário, foi criado com sucesso!');
