@@ -17,11 +17,11 @@
 
                                 <form class="form-register" action="/login/register" method="POST">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken%>"> <!--Token autenticador-->
-                                    <div class="mb-3">
+                                    <div class="mb-3 box-email">
                                         <label>E-mail</label>
                                         <input type="email" class="form-control" name="email">
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="mb-3 box-password">
                                         <label>Senha</label>
                                         <input type="password" class="form-control" name="password">
                                     </div>

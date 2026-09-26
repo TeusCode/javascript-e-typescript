@@ -18,9 +18,9 @@
                                 <!--Se o contato já estiver sido criado no banco de dados, a lógica, vai permitir que ele seja editado, e não salvo novamente, como um novo-->
                                 
                                 <%if(contato._id){%> <!--Se o contato existir, vou editar-->
-                                <form action="/contato/edit/<%= contato._id %>" method="POST"> <!--Não pode fechar a tag no final da linha, se não o form não vai considerar os inputs dentro, (considere um fechamento de tag, para os dois caminhos)-->
+                                <form class="contato-form" action="/contato/edit/<%= contato._id %>" method="POST"> <!--Não pode fechar a tag no final da linha, se não o form não vai considerar os inputs dentro, (considere um fechamento de tag, para os dois caminhos)-->
                                 <% }else{%> <!--Se o contato não existir, não vou editar-->
-                                <form action="/contato/register" method="POST">
+                                <form class="form-contato"  action="/contato/register" method="POST">
                                 <%}%>    
 
                                     <input type="hidden" name="_csrf" value="<%= csrfToken%>"> <!--Token autenticador-->
