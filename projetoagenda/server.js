@@ -26,9 +26,9 @@ const routes = require("./routes");
 const port = 3000;
 
 //Imports Middleswares
-const { middlewareGlobal, checkCsrfError, csrfMiddleware, msgSuccess } = require('./src/middlewares/middleware');
+const { middlewareGlobal, checkCsrfError, csrfMiddleware} = require('./src/middlewares/middleware');
 const helmet = require('helmet');//Importa o helmet (configura headers) (Recomendação do express)
-const csrf = require('csurf');//Cria tokens para nossos formulários, para válidação (Impede que outros sites, consigam postar na nossa aplicaçaõ)
+const csrf = require('csurf');//Cria tokens para nossos formulários, para válidação (Impede que outros sites, consigam postar na nossa aplicação)
 
 //Avisa o express, que precisa tratar o req.body (os posts)
 app.use(express.urlencoded({ extended: true }));
@@ -38,12 +38,12 @@ app.use('/frontend', express.static('frontend'));
 
 //Configura sessão:
 const sessionOptions = session({
-  secret: 'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',
-  store: MongoStore.create({ client: mongoose.connection.getClient() }),
+  secret: 'jwojwidjiwdiidw ojwodjwjwodj iooiiuoh ihiu78 t766g6g6',//Assinar cookie de sessão
+  store: MongoStore.create({ client: mongoose.connection.getClient() }),//Onde salvar a sessão
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 24 * 7,
+    maxAge: 1000 * 60 * 60 * 24 * 7,//Tempo de vida do cookie
     httpOnly: true,
   }
 });
@@ -55,7 +55,7 @@ app.set("view engine", "ejs"); //Seta qual engine o express deve utilizar
 // (permite salvar dados do usuário, como o login, entre as requisições)
 app.use(sessionOptions);
 app.use(flash());
-app.use(helmet());
+app.use(helmet());//Protege o ambiente do navegador
 app.use(csrf());//Injeta um token nas páginas, para garantir que a requisição venha mesmo do nosso servidor
 
 //Middlewares
