@@ -1,8 +1,10 @@
+//DEFINE O CAMINHO DOS ARQUIVOS
+
 const { resolve } = require("path");
 
 module.exports = {
   config: resolve(__dirname, "src", "config", "database.js"),
-  "models-path": resolve(__dirname, "src", "models"),
-  "migrations-path": resolve(__dirname, "src", "database", "migrations"),
-  "seeders-path": resolve(__dirname, "src", "database", "seeds"),
+  "models-path": resolve(__dirname, "src", "models"), //Arquivos que representam as tabelas
+  "migrations-path": resolve(__dirname, "src", "database", "migrations"), //Arquivos que mudam as estruturas do banco
+  "seeders-path": resolve(__dirname, "src", "database", "seeds"), //Arquivos de dados iniciais no banco
 };

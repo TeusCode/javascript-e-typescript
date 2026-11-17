@@ -1,13 +1,13 @@
-"use strict";
+//INSTRUÇÕES PARA CRIAR A ESTRUTURA FISICA
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("alunos", {
       id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        autoIncrement: true,
+        type: Sequelize.INTEGER,//Tipo de dado
+        allowNull: false,//Valor vazio
+        autoIncrement: true,//Gerar um número sempre que insere um novo registro
         primaryKey: true,
       },
       nome: {
@@ -46,6 +46,7 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
+    console.log("Esse é o squelize:", Sequelize);
     await queryInterface.dropTable("alunos");
   },
 };
