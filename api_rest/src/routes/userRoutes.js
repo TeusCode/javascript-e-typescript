@@ -3,7 +3,10 @@ import UserController from "../controllers/UserController.js";
 
 const router = new Router();
 
-router.post("/", UserController.index);
+router.post("/", UserController.store);
+router.get("/", UserController.index);
+router.get("/:id", UserController.show);
+router.put("/:id", UserController.update);
 
 export default router;
 

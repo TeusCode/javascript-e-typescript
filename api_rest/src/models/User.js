@@ -15,7 +15,7 @@ export default class User extends Model {
               msg: "O nome de usuário não pode ficar em branco!",
             },
             len: {
-              args: [3, 10], //Minimo e máximo de caracteres
+              args: [5, 10], //Minimo e máximo de caracteres
               msg: "O nome de usuário deve ter entre 5 e 10 caracteres!",
             },
           },
@@ -36,6 +36,7 @@ export default class User extends Model {
           defaultValue: "",
         },
         password: {
+          //Esse campo não vai existir na base de dados
           type: Sequelize.VIRTUAL,
           defaultValue: "",
           validate: {
@@ -44,7 +45,7 @@ export default class User extends Model {
               msg: "A senha precisa ter de 6 a 12 caracteres!",
             },
           },
-        }, //Esse campo não vai existir na base de dados
+        },
       },
       {
         sequelize,
@@ -52,6 +53,8 @@ export default class User extends Model {
     );
 
     this.addHook("beforeSave", async (user) => {
+      //Antes de gravar, adiciona a senha hash dentro user
+      if (!user.password) return;
       user.password_hash = await bcryptjs.hash(user.password, 8);
     });
 

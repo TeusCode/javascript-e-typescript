@@ -10,4 +10,4 @@ const models = [Aluno, User];
 const connection = new Sequelize(databaseConfig); //Criando o objeto de conexão com o banco
 
 //Modelo.init(objetoDeConexão); Registrando modelo no Sequilize
-models.forEach((model) => model.init(connection));
+models.forEach((model) => model.init(connection));//CARREGAOS MODEL

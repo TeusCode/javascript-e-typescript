@@ -1,3 +1,4 @@
+//FAZ A CONFIG DO BANCO DE DADOS
 require("dotenv").config();
 
 module.exports = {
