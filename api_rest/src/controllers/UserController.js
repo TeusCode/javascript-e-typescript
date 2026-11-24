@@ -22,7 +22,7 @@ class UserController {
     try {
       const users = await User.findAll();
       res.status(200).json({
-        usuarios: users.map((n) => n.nome),
+        usuarios: users.map((n) => n),
       });
     } catch (error) {
       res.status(400).json({
@@ -55,7 +55,30 @@ class UserController {
       res.status(200).json(newUser);
     } catch (error) {
       console.log(error);
-      res.status(400).json("Ocorreu um erro");
+      res.status(400).json({
+        erros: error.errors.map((err) => err.message),
+      });
+    }
+  }
+
+  //Delete - delete
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+      const user = await User.findByPk(id);
+      if (!id) res.status(400).json("ID não enviado!");
+      if (!user) res.status(404).json("Usuário não existe!");
+
+      await user.destroy();
+      res.status(200).json({
+        userDelete: user,
+        msg: "Usuário deletado com sucesso!",
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(400).json({
+        erros: error.errors.map((err) => err.message),
+      });
     }
   }
 }
