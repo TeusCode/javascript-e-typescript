@@ -45,8 +45,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
-    console.log("Esse é o squelize:", Sequelize);
+  async down(queryInterface) {
     await queryInterface.dropTable("alunos");
   },
 };

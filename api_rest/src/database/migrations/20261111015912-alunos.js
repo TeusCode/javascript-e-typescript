@@ -5,9 +5,9 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("alunos", {
       id: {
-        type: Sequelize.INTEGER,//Tipo de dado
-        allowNull: false,//Valor vazio
-        autoIncrement: true,//Gerar um número sempre que insere um novo registro
+        type: Sequelize.INTEGER, //Tipo de dado
+        allowNull: false, //Valor vazio
+        autoIncrement: true, //Gerar um número sempre que insere um novo registro
         primaryKey: true,
       },
       nome: {
@@ -45,8 +45,7 @@ module.exports = {
     });
   },
 
-  async down(queryInterface, Sequelize) {
-    console.log("Esse é o squelize:", Sequelize);
+  async down(queryInterface) {
     await queryInterface.dropTable("alunos");
   },
 };
