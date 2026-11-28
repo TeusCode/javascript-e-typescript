@@ -19,26 +19,42 @@ class AlunoController {
 
   async update(req, res) {
     try {
-      const aluno = await Aluno.findOne({ where: { id: req.params.id } });
+      const { id } = req.params;
+      if (!id) res.status(400).json({ erros: ["Faltando ID"] });
+      const aluno = await Aluno.findOne({ where: { id } });
+      if (!aluno) res.status(400).json({ erros: "Aluno não existe" });
+
       const newAluno = await aluno.update(req.body);
       res.status(200).json(newAluno);
     } catch (error) {
-      return res.status(401).json({ error });
+      return res.status(401).json({
+        erros: error.errors.map((e) => e.message),
+      });
     }
   }
 
   async show(req, res) {
     try {
-      const aluno = await Aluno.findOne({ where: { id: req.params.id } });
+      const { id } = req.params;
+      if (!id) res.status(400).json({ erros: ["Faltando ID"] });
+      const aluno = await Aluno.findOne({ where: { id } });
+      if (!aluno) res.status(400).json({ erros: "Aluno não existe" });
+
       res.status(200).json({ aluno });
     } catch (error) {
-      return res.status(401).json({ error });
+      return res.status(401).json({
+        erros: error.errors.map((e) => e.message),
+      });
     }
   }
 
   async delete(req, res) {
     try {
-      const aluno = await Aluno.findOne({ where: { id: req.params.id } });
+      const { id } = req.params;
+      if (!id) res.status(400).json({ erros: ["Faltando ID"] });
+      const aluno = await Aluno.findOne({ where: { id } });
+      if (!aluno) res.status(400).json({ erros: "Aluno não existe" });
+
       await aluno.destroy();
       res.status(200).json("Aluno excluido!");
     } catch (error) {
